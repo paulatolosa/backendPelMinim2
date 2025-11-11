@@ -1,0 +1,66 @@
+# Java
+*.class
+*.log
+*.ctxt
+hs_err_pid*
+replay_pid*
+
+# Package files
+*.jar
+*.war
+*.nar
+*.ear
+!/.mvn/wrapper/maven-wrapper.jar
+
+# Maven
+/target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Eclipse (in case someone opens it there)
+.classpath
+.project
+.settings/
+bin/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.TemporaryItems
+
+# Logs and reports
+logs/
+surefire-reports/
+failsafe-reports/
+
+# Environment files
+.env
+.env.*
+
+# Sonar / coverage
+.sonar/
+.scannerwork/
+jacoco.exec
+
