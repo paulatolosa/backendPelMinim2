@@ -27,6 +27,7 @@ public class AuthManagerImpl implements AuthManager {
 
     @Override
     public void register(Usuario usr) {
+        LOGGER.info(" Inicio login: username: " + usr.getUsername()+ " password: " + usr.getPassword()+" nombre: " + usr.getNombre() +" apellido: " + usr.getApellido()+" gmail: " + usr.getGmail()+" fechaNacimiento: " + usr.getFechaNacimiento());
         if (baseDeDatos.getUsuario(usr.getUsername()) != null) {
             LOGGER.error("Intento de registro fallido: El usuario ya existe: " + usr);
             throw new RuntimeException("El usuario ya existe");
@@ -37,6 +38,7 @@ public class AuthManagerImpl implements AuthManager {
 
     @Override
     public Usuario login(Usuario usr) {
+        LOGGER.info(" Inicio login: username: " + usr.getUsername()+ " password: " + usr.getPassword());
         Usuario usuario = baseDeDatos.getUsuario(usr.getUsername());
         if (usuario == null || !usuario.getPassword().equals(usr.getPassword())) {
             LOGGER.error("Intento de login fallido para el usuario: " + usr);

@@ -27,6 +27,22 @@
                 <label for="confirm-password" class="form-label">Confirmar Contraseña</label>
                 <input type="password" class="form-control" id="confirm-password" name="confirm-password" required>
             </div>
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input type="text" class="form-control" id="apellido" name="apellido" required>
+            </div>
+            <div class="mb-3">
+                <label for="gmail" class="form-label">Gmail</label>
+                <input type="email" class="form-control" id="gmail" name="gmail" required>
+            </div>
+            <div class="mb-3">
+                <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+                <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" required>
+            </div>
             <button type="submit" class="btn btn-primary-custom">Registrarse</button>
         </form>
         <div class="footer-text">
@@ -47,6 +63,10 @@ $(document).ready(function() {
         const username = $('#username').val();
         const password = $('#password').val();
         const confirmPassword = $('#confirm-password').val();
+        const nombre = $('#nombre').val();
+        const apellido = $('#apellido').val();
+        const gmail = $('#gmail').val();
+        const fechaNacimiento = $('#fechaNacimiento').val();
 
         if (password !== confirmPassword) {
             $('#error-message').text('Las contraseñas no coinciden.').show();
@@ -59,7 +79,7 @@ $(document).ready(function() {
             url: '/v1/auth/register', // La URL del endpoint de registro
             type: 'POST',
             contentType: 'application/json',
-            data: JSON.stringify({ username: username, password: password }), //para pasar de variables (objeto javascript) a json
+            data: JSON.stringify({ username: username, password: password, nombre: nombre, apellido: apellido, gmail: gmail, fechaNacimiento: fechaNacimiento }), //para pasar de variables (objeto javascript) a json
             success: function(response) {
                 $('#success-message').text('¡Registro exitoso! Redirigiendo a la página de inicio de sesión...').show();
                 //limpiar el formulario
