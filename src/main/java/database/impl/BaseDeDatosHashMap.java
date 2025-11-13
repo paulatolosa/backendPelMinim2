@@ -26,7 +26,7 @@ public class BaseDeDatosHashMap implements BaseDeDatos {
         this.items.put(item1.getId(), item1);
         this.items.put(item2.getId(), item2);
 
-        LOGGER.info("Items de prueba añadidos a la base de datos");
+        LOGGER.info("Items de prueba añadidos a la base de datos, quitar en un futuro");
     }
 
     public static synchronized BaseDeDatosHashMap getInstance() {

@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -73,7 +74,7 @@ public class AuthManagerService {
         }
     }
 
-    @GET
+    @GET //Debugar me imagino, devuelve usr entero con password (o crear un DTO sin password)
     @Path("/users")
     @ApiOperation(
             value = "Obtener todos los usuarios registrados",
@@ -85,8 +86,9 @@ public class AuthManagerService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getUsers() {
         List<Usuario> users = this.am.getRegisteredUsers();
+        GenericEntity<List<Usuario>> entity = new GenericEntity<List<Usuario>>(users) {};
         return Response.status(Response.Status.OK)
-                .entity(users)
+                .entity(entity)
                 .build();
     }
 }
