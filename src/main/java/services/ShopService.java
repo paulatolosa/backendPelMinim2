@@ -68,6 +68,10 @@ public class ShopService {
     }
     @GET
     @Path("/monedas/{username}")
+    @ApiOperation(
+            value = "Devuelve las monoedas que tiene un usuario",
+            notes = "Devuelve las monedas que tiene un usuaria especificando su ursername"
+    )
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCoins(@PathParam("username") String username) {
 
@@ -84,6 +88,10 @@ public class ShopService {
     }
     @GET
     @Path("/perfil/{username}")
+    @ApiOperation(
+            value = "Devuelve perfil usuario",
+            notes = "Devuelve perfil usuario en funcion de id"
+    )
     @Produces(MediaType.APPLICATION_JSON)
     public Response getPerfil(@PathParam("username") String usernameJson) {
 
