@@ -6,6 +6,7 @@ import database.models.Item;
 import database.models.Usuario;
 import org.apache.log4j.Logger;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShopManagerImpl implements ShopManager {
@@ -69,6 +70,12 @@ public class ShopManagerImpl implements ShopManager {
         if (u == null) return -1;
         return u.getMejorPuntuacion();
     }
-
+    @Override
+    public List<Usuario> getRanking() {
+        List<Usuario> ranking = new ArrayList<>(this.baseDeDatos.getUsuarios());
+        ranking.sort((u1, u2) ->
+                Integer.compare(u2.getMejorPuntuacion(), u1.getMejorPuntuacion()));
+        return ranking;
+    }
 }
 

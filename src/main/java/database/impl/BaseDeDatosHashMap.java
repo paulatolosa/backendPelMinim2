@@ -21,12 +21,22 @@ public class BaseDeDatosHashMap implements BaseDeDatos {
         this.items = new HashMap<>();
 
         // Añadir items de prueba para DEBUG
-        Item item1 = new Item(1, "Espada legendaria", "Una espada muy poderosa", 100);
-        Item item2 = new Item(2, "Escudo de diamante", "Un escudo indestructible", 150);
+        Item item1 = new Item(1, "Booster basic", "Un booster basico que te permite ir mas rapido durante unos segundos", 100);
+        Item item2 = new Item(2, "Neumaticos avanzados", "Con estos neumaticos tienes mas agarre y velocidad augmentada", 150);
         this.items.put(item1.getId(), item1);
         this.items.put(item2.getId(), item2);
         Usuario admin = new Usuario("admin", "admin123", "admin", "admin", "admin@gmail.com", "10/10/10");
+        Usuario arnau = new Usuario("arnau", "arnau123", "arnau", "munte", "arnau@gmail.com", "10/10/10");
+        Usuario pablo = new Usuario("Pablito", "pablo123", "Pablo", "Nse", "pablo@gmail.com", "10/10/10");
+        Usuario paula = new Usuario("Paula", "paula123", "Paula", "Nse", "paula@gmail.com", "10/10/10");
+        usuarios.put("Paula", paula);
         usuarios.put("admin", admin);
+        usuarios.put("arnau", arnau);
+        usuarios.put("pablo", pablo);
+        admin.setMejorPuntuacion(1000);
+        arnau.setMejorPuntuacion(1200);
+        pablo.setMejorPuntuacion(1500);
+        paula.setMejorPuntuacion(1450);
         LOGGER.info("Items de prueba añadidos a la base de datos");
     }
 

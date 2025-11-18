@@ -123,5 +123,37 @@ public class ShopService {
 
         return Response.ok(json).build();
     }
+
+    @GET
+    @Path("/ranking")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getRanking() {
+
+        // agafem la llista ordenada des del manager
+        List<Usuario> usuarios = shopManager.getRanking();
+
+        // construïm el JSON manualment: [ { ... }, { ... } ]
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+
+        for (int i = 0; i < usuarios.size(); i++) {
+            Usuario u = usuarios.get(i);
+
+            sb.append("{")
+                    .append("\"username\":\"").append(u.getUsername()).append("\",")
+                    .append("\"nombre\":\"").append(u.getNombre()).append("\",")
+                    .append("\"mejorPuntuacion\":").append(u.getMejorPuntuacion())
+                    .append("}");
+
+            if (i < usuarios.size() - 1) {
+                sb.append(",");
+            }
+        }
+
+        sb.append("]");
+
+        return Response.ok(sb.toString()).build();
+    }
+
 }
 

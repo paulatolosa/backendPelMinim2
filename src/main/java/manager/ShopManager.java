@@ -10,5 +10,6 @@ public interface ShopManager {
     void comprarItem(String username, Integer itemId);
     int getMonedas(String username);
     Usuario getPerfil(String username);
+    List<Usuario> getRanking();
 }
 

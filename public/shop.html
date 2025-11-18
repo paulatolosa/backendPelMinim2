@@ -22,7 +22,10 @@
                         <a class="nav-link" href="perfil.html">Mi Perfil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" id="btn-inventario">Inventario</a>
+                        <a class="nav-link" href="ranking.html">Ranking</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="inventario.html">Inventario</a>
                     </li>
                     <li class="nav-item">
                         <span id="coins-display" class="nav-link fw-bold">💰 0</span>
@@ -87,32 +90,32 @@
 
             loadCoinsFromBackend(); // carreguem monedes reals del backend
 
+
             // ------------------ INVENTARI ------------------
             if (!localStorage.getItem("inventory")) {
-                localStorage.setItem("inventory", JSON.stringify([]));
+                localStorage.setItem("inventory", JSON.stringify({})); // objecte, no array
             }
 
             function addToInventory(item) {
                 const inv = JSON.parse(localStorage.getItem("inventory"));
-                inv.push(item);
+                const id = item.id;
+
+                if (!inv[id]) {
+                    inv[id] = {
+                        id: item.id,
+                        nombre: item.nombre,
+                        precio: item.precio,
+                        cantidad: 0
+                    };
+                }
+
+                inv[id].cantidad += 1;
                 localStorage.setItem("inventory", JSON.stringify(inv));
             }
 
-            $('#btn-inventario').on('click', function(e) {
-                e.preventDefault();
-                const inv = JSON.parse(localStorage.getItem("inventory"));
-                if (inv.length === 0) {
-                    alert("El teu inventari està buit!");
-                    return;
-                }
-                let msg = "📦 Inventari:\n\n";
-                inv.forEach(i => {
-                    msg += `• ${i.nombre} (preu: ${i.precio})\n`;
-                });
-                alert(msg);
-            });
 
             // ------------------ CARREGAR ITEMS ------------------
+
             $.ajax({
                 type: 'GET',
                 url: '/v1/shop/items',
@@ -120,9 +123,13 @@
                 success: function(items) {
                     let shopItemsHtml = '';
                     items.forEach(function(item) {
+                        let img = "";
+                        if (item.id === 1) img = "img/booster_basic.png";
+                        if (item.id === 2) img = "img/neumaticos.png";
                         shopItemsHtml += `
                             <div class="col">
                                 <div class="card h-100 card-custom">
+                                <img src="${img}" class="card-img-top" alt="${item.nombre}">
                                     <div class="card-body">
                                         <h5 class="card-title">${item.nombre}</h5>
                                         <p class="card-text">${item.descripcion}</p>
@@ -178,6 +185,8 @@
             });
 
         });
+
     </script>
+
 </body>
 </html>
