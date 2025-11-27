@@ -6,6 +6,8 @@ import database.models.Usuario;
 import org.apache.log4j.Logger;
 
 import java.util.List;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 public class AuthManagerImpl implements AuthManager {
     private static final Logger LOGGER = Logger.getLogger(AuthManagerImpl.class);
@@ -29,7 +31,7 @@ public class AuthManagerImpl implements AuthManager {
     // VALIDACIÓN DE REGISTRO
     // ==========================
     // Método interno que valida username, nombre y apellido para evitar
-    // caracteres especiales en campos no-email.
+    // caracteres especiales en campos no-email, y valida la fecha de nacimiento.
     private void validateRegistrationData(Usuario usr) {
         if (usr == null) {
             throw new RuntimeException("Datos de usuario inválidos");
@@ -51,7 +53,27 @@ public class AuthManagerImpl implements AuthManager {
         if (usr.getApellido() == null || !usr.getApellido().matches(regexNombre)) {
             throw new RuntimeException("El apellido solo puede contener letras y espacios.");
         }
-        // No validamos password ni email/fecha aquí porque tienen sus propias reglas.
+
+        // --- VALIDACIÓN DE FECHA DE NACIMIENTO (Mínimo 16 años) ---
+        final int MIN_AGE = 16;
+        if (usr.getFechaNacimiento() == null) {
+            throw new RuntimeException("Fecha de nacimiento obligatoria.");
+        }
+        try {
+            LocalDate fechaNacimiento = LocalDate.parse(usr.getFechaNacimiento());
+            LocalDate fechaCorte = LocalDate.now().minusYears(MIN_AGE); // debe haber nacido en o antes de esta fecha
+
+            if (fechaNacimiento.isAfter(LocalDate.now())) {
+                throw new RuntimeException("La fecha de nacimiento no puede ser futura.");
+            }
+
+            if (fechaNacimiento.isAfter(fechaCorte)) {
+                throw new RuntimeException("Debes tener al menos " + MIN_AGE + " años para registrarte.");
+            }
+        } catch (DateTimeParseException e) {
+            throw new RuntimeException("Formato de fecha de nacimiento inválido (debe ser AAAA-MM-DD).");
+        }
+        // No validamos password ni email aquí porque tienen sus propias reglas.
     }
 
     @Override

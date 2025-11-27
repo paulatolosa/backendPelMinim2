@@ -122,6 +122,44 @@
             }
 
             // ===============================================
+            // VALIDACIÓN DE FECHA DE NACIMIENTO (Mínimo 16 años)
+            // ===============================================
+
+            const MIN_AGE = 16;
+            if (!fechaNacimiento) {
+                $('#error-message').text('La fecha de nacimiento es obligatoria.').show();
+                $('#fechaNacimiento').addClass('is-invalid');
+                return;
+            }
+            const birthDate = new Date(fechaNacimiento);
+            const today = new Date();
+            // Fecha futura
+            if (birthDate > today) {
+                $('#error-message').text('La fecha de nacimiento no puede ser futura.').show();
+                $('#fechaNacimiento').addClass('is-invalid');
+                return;
+            }
+            // Calcular edad
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const m = today.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            if (age < MIN_AGE) {
+                $('#error-message').text('Debes tener al menos ' + MIN_AGE + ' años para registrarte.').show();
+                $('#fechaNacimiento').addClass('is-invalid');
+                return;
+            }
+
+            // Ajuste del atributo max del datepicker para mejorar UX (evita seleccionar fechas no válidas)
+            // Se pone dinámicamente por si la página se mantiene abierta mucho tiempo.
+            const cutoff = new Date();
+            cutoff.setFullYear(cutoff.getFullYear() - MIN_AGE);
+            const pad = (n) => n < 10 ? '0' + n : n;
+            const cutoffStr = cutoff.getFullYear() + '-' + pad(cutoff.getMonth()+1) + '-' + pad(cutoff.getDate());
+            $('#fechaNacimiento').attr('max', cutoffStr);
+
+            // ===============================================
             // FIN: VALIDACIÓN
             // ===============================================
 
