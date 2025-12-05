@@ -7,6 +7,8 @@ import db.orm.dao.UsuarioDAOImpl;
 import db.orm.model.Usuario;
 import org.apache.log4j.Logger;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 public class AuthManagerImpl implements AuthManager {
@@ -84,6 +86,8 @@ public class AuthManagerImpl implements AuthManager {
 
     @Override
     public void register(Usuario usuario) {
+        validateRegistrationData(usuario);
+        LOGGER.info("Usuario validado correctamente");
         LOGGER.info(" Inicio login: username: " + usuario.getUsername()+ " password: " + usuario.getPassword()+" nombre: " + usuario.getNombre() +" apellido: " + usuario.getApellido()+" gmail: " + usuario.getGmail()+" fechaNacimiento: " + usuario.getFechaNacimiento());
         Usuario existent = userDAO.getUsuarioByEmail(usuario.getGmail());
         if (existent != null) {
