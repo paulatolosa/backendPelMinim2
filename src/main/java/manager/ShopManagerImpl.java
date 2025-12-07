@@ -75,7 +75,9 @@ public class ShopManagerImpl implements ShopManager {
     }
     @Override
     public Usuario getPerfil(String username){
-        return this.usuarioDAO.getUsuarioByUsername(username);
+        Usuario u = this.usuarioDAO.getUsuarioByUsername(username);
+        LOGGER.info("Obtenint perfil de: " + u.getEmail());
+        return u;
     }
 
     public int getMejorPuntuacion(String username) {

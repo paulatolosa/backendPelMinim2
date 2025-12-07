@@ -65,7 +65,7 @@ public class UsuarioDAOImpl implements IUsuarioDAO {
         Session session = FactorySession.openSession();
         try {
             HashMap<String, Object> params = new HashMap<>();
-            params.put("gmail", email);
+            params.put("email", email);
             List<Object> result = session.findAll(Usuario.class, params);
             return result.isEmpty() ? null : (Usuario) result.get(0);
         } catch (Exception e) {

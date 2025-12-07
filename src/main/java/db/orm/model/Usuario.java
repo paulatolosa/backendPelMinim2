@@ -9,7 +9,7 @@ public class Usuario {
     private String password;
     private String nombre;
     private String apellido;
-    private String gmail;
+    private String email;
     private String fechaNacimiento;
     private int monedas;
     private int mejorPuntuacion;
@@ -17,19 +17,19 @@ public class Usuario {
 
     }
 
-    public Usuario(int ID, String username, String password,  String nombre, String apellido, String gmail, String fechaNacimiento) {
+    public Usuario(int ID, String username, String password,  String nombre, String apellido, String email, String fechaNacimiento) {
         this.ID = ID;
         this.username = username;
         this.password = password;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.gmail = gmail;
+        this.email = email;
         this.fechaNacimiento = fechaNacimiento;
         this.monedas = this.monedas;
         this.mejorPuntuacion = 0;
     }
     public int getId() {return ID;}
-    public void setId(int id) {this.ID = ID;}
+    public void setId(int id) {this.ID = id;}
     public String getUsername() {
         return username;
     }
@@ -62,12 +62,12 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public String getGmail() {
-        return gmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setGmail(String gmail) {
-        this.gmail = gmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFechaNacimiento() {

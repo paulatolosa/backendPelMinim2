@@ -88,10 +88,10 @@ public class AuthManagerImpl implements AuthManager {
     public void register(Usuario usuario) {
         validateRegistrationData(usuario);
         LOGGER.info("Usuario validado correctamente");
-        LOGGER.info(" Inicio login: username: " + usuario.getUsername()+ " password: " + usuario.getPassword()+" nombre: " + usuario.getNombre() +" apellido: " + usuario.getApellido()+" gmail: " + usuario.getGmail()+" fechaNacimiento: " + usuario.getFechaNacimiento());
-        Usuario existent = userDAO.getUsuarioByEmail(usuario.getGmail());
+        LOGGER.info(" Inicio register: username: " + usuario.getUsername()+ " password: " + usuario.getPassword()+" nombre: " + usuario.getNombre() +" apellido: " + usuario.getApellido()+" email: " + usuario.getEmail()+" fechaNacimiento: " + usuario.getFechaNacimiento());
+        Usuario existent = userDAO.getUsuarioByEmail(usuario.getEmail());
         if (existent != null) {
-            LOGGER.error("Intento de registro fallido: El usuario con correo ya existe: " + usuario.getGmail());
+            LOGGER.error("Intento de registro fallido: El usuario con correo ya existe: " + usuario.getEmail());
             throw new RuntimeException("El usuario ya existe");
         }
         usuario.setId(0); //PER AUTOINCREMENT EN BASE DADES
