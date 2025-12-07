@@ -1,0 +1,279 @@
+/* ==========================================================================
+   ESTIL PIXEL – WEB FRONTEND DriveN'Dodge
+   ========================================================================== */
+
+/* 1. FONTS LOCALS */
+@font-face {
+    font-family: 'PixelFont';
+    src: url('../fonts/pixel_font.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'VT323';
+    src: url('../fonts/VT323-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 2. BASE */
+body.landing-body {
+    font-family: 'VT323', monospace;
+    background-image: url('../img/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+
+    color: #ffffff;
+    margin: 0;
+    min-height: 100vh;
+}
+
+body.clean-background {
+    background-image: url('../img/backclean.png') !important;
+}
+
+
+
+/* Títols dins landing amb VT323 per defecte */
+.landing-body h1,
+.landing-body h2,
+.landing-body h3,
+.landing-body h4,
+.landing-body h5,
+.landing-body h6 {
+    font-family: 'VT323', monospace;
+    color: #ffffff;
+    text-transform: none;
+}
+
+/* 3. HERO SENSE ANIMACIONS */
+.hero-section {
+    min-height: calc(100vh - 20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    padding: 60px 15px;
+    background: none;
+}
+
+
+.hero-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Logo centrat i petit */
+.hero-logo {
+    display: block;
+    margin: 0 auto;
+
+    max-width: 340px;
+    width: 50vw;
+
+    transform: translateY(-80px);
+}
+
+.hero-banner {
+    display: block;
+    margin: 10px auto 0 auto;
+
+    max-width: 300px;     /* ajusta la mida */
+    width: 60vw;          /* responsive */
+
+    transform: translateY(-90px); /* pujar / baixar segons vulguis */
+}
+
+
+
+/* Títol amb PixelFont */
+.hero-title {
+    font-family: 'PixelFont', 'VT323', monospace;
+    font-size: 2.4rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+/* Subtítol amb VT323 */
+.hero-subtitle {
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    margin-bottom: 0;
+    transform: translateY(115px);   /* PUJA/BAIXA */
+}
+
+/* 4. BOTONS AMB redrectbttn.png */
+.hero-buttons {
+    margin-top: 24px;
+}
+
+.game-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    /* mida del botó */
+    height: 52px;
+    padding: 0 18px;          /* espai lateral */
+    /* deixem que l'ample sigui automàtic segons el text */
+
+    background-image: url('../img/redrectbttn.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    font-family: 'PixelFont', 'VT323', monospace;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-decoration: none;
+
+    white-space: nowrap;      /* que “Iniciar Sesión” no es trenqui en dues línies */
+    transition: transform 0.1s ease-out;
+}
+
+.game-btn:link,
+.game-btn:visited {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.game-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Botó pixel blau */
+.game-btn-blue {
+    background-image: url('../img/bluerectbttn.png') !important;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+
+
+/* 5. FEATURES */
+.features-section {
+    padding: 60px 0;
+    background: rgba(0, 0, 0, 0.65);
+}
+
+.feature {
+    background: rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease-out;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.feature h3 {
+    font-family: 'VT323', monospace;
+    font-size: 1.6rem;
+}
+
+.feature p {
+    font-family: 'VT323', monospace;
+    font-size: 1.1rem;
+}
+
+/* 6. FOOTER */
+.footer-section {
+    flex-shrink: 0;
+    padding: 20px 0;
+    background: rgba(0, 0, 0, 0.85);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    font-family: 'VT323', monospace;
+    font-size: 0.9rem;
+}
+
+/* ======================================================================
+   BOTONS SUPERIORS DRETA (només index)
+   ====================================================================== */
+
+.top-right-buttons {
+    position: fixed;
+    top: 25px;
+    right: 30px !important;
+    left: auto !important;
+
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+
+    z-index: 2000;
+}
+
+.top-right-buttons .game-btn {
+    height: 45px;
+    padding: 0 18px;
+    font-size: 0.85rem;
+}
+
+.footer-link {
+    color: #8aa0ff;
+    text-decoration: none;
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+}
+
+.footer-link:hover {
+    color: #b9c4ff;
+    text-decoration: underline;
+}
+
+
+.container-custom {
+    background: rgba(0, 0, 0, 0.75); /* negre translúcid */
+    border-radius: 15px;
+    padding: 40px;
+
+    color: #ffffff;
+}
+
+/* Elimina neon del títol del formulari */
+.container-custom h2 {
+    color: #ffffff;
+    font-family: 'PixelFont', 'VT323';
+    text-shadow: none !important;
+    letter-spacing: 2px;
+}
+
+/*  ======================================================================
+    MIDES FONTS
+    ======================================================================*/
+
+.container-custom h2 {
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+}
+
+.container-custom .form-label {
+    font-size: 1.4rem;
+    font-family: 'VT323', monospace;
+}
+
+.form-control {
+    font-size: 1.4rem;
+    height: 48px;
+    padding: 8px 12px;
+    font-family: 'VT323', monospace;
+}
