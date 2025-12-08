@@ -4,34 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Botiga - DriveN'Dodge</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- ESTIL ACTUAL + NOU ESTIL PIXEL -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles2.css">
 </head>
-<body>
+
+<body class="landing-body clean-background2">
 
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
+
     <div class="container">
-        <a class="navbar-brand fw-bold text-gold" href="index.html">🏎️ DriveN'Dodge</a>
+
+<!--        <div class="navbar-brand d-flex align-items-center">-->
+<!--            <img src="img/logo.png" alt="DriveN'Dodge Logo" class="navbar-logo-small">-->
+<!--        </div>-->
+
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
+
+            <ul class="navbar-nav me-auto pixel-font">
                 <li class="nav-item">
-                    <a class="nav-link active text-gold" href="shop.html">🛒 Botiga</a>
+                    <a class="nav-link active text-gold" href="shop.html">🛒 Tienda</a>
                 </li>
                 <li class="nav-item">
-                        <a class="nav-link" href="inventario.html">🎒 Inventari</a>
+                    <a class="nav-link" href="inventario.html">🎒 Inventario</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="ranking.html">🏆 Ranking</a>
                 </li>
             </ul>
 
-            <ul class="navbar-nav ms-auto align-items-center">
+            <ul class="navbar-nav ms-auto align-items-center pixel-font">
+
                 <li class="nav-item me-3">
                     <div class="d-flex align-items-center bg-dark border border-warning rounded px-3 py-1">
                         <span class="me-2">💰</span>
@@ -40,30 +52,41 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                    <a class="nav-link dropdown-toggle pixel-font" href="#" id="userDropdown"
+                       role="button" data-bs-toggle="dropdown">
                         👤 <span id="username-display">Usuari</span>
                     </a>
+
                     <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary">
-                        <li><a class="dropdown-item text-light" href="perfil.html">Mi Perfil</a></li>
+                        <li><a class="dropdown-item text-light pixel-font" href="perfil.html">Mi Perfil</a></li>
                         <li><hr class="dropdown-divider bg-secondary"></li>
-                        <li><a class="dropdown-item text-danger" href="#" id="btn-logout">Cerrar Sesión</a></li>
+                        <li><a class="dropdown-item text-danger pixel-font" href="#" id="btn-logout">Cerrar Sesión</a></li>
                     </ul>
                 </li>
+
             </ul>
+
         </div>
     </div>
 </nav>
+<!--<div class="navbar-logo-center">-->
+<!--    <img src="img/logo.png" alt="DriveN'Dodge" class="navbar-logo-img">-->
+<!--</div>-->
 
-<div class="container mt-5">
-    <h2 class="text-center mb-5 text-uppercase fw-bold"><span class="text-gold">Botiga</span> d'Objectes</h2>
+<div class="container mt-5 container-custom shop-container">
+
+    <h2 class="text-center mb-5 pixel-font">
+        Tienda de items
+    </h2>
 
     <div id="shop-items-container" class="row">
         <div class="text-center py-5">
             <div class="spinner-border text-warning" role="status">
-                <span class="visually-hidden">Carregant...</span>
+                <span class="visually-hidden">Cargando...</span>
             </div>
         </div>
     </div>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -101,7 +124,7 @@
                     $('#coins-display').text(response.coins);
                 },
                 error: function() {
-                    console.log("Error carregant monedes");
+                    console.log("Error cargando monedas");
                 }
             });
         }
@@ -118,7 +141,7 @@
                     container.empty();
 
                     if (!items || items.length === 0) {
-                        container.html('<h3 class="text-center text-muted">No hi ha items disponibles actualment.</h3>');
+                        container.html('<h3 class="text-center pixel-font">No hay items disponibles actualmente.</h3>');
                         return;
                     }
 
@@ -130,7 +153,7 @@
                             ruta = "/" + ruta;
                         }
                         let idReal = item.id || item.ID;
-                        if (!idReal) console.error("ALERTA: Aquest item no té ID!", item);
+                        if (!idReal) console.error("ALERTA: Este item no tiene ID!", item);
                         let html = `
                                 <div class="col-md-4 mb-4">
                                     <div class="card h-100">
@@ -149,7 +172,7 @@
                                                         data-item-id="${idReal}"
                                                         data-item-price="${item.precio}"
                                                         data-item-name="${item.nombre}">
-                                                    COMPRAR ARA
+                                                    COMPRAR AHORA
                                                 </button>
                                             </div>
                                         </div>
@@ -160,8 +183,8 @@
                     });
                 },
                 error: function(xhr) {
-                    console.error("Error carregant items:", xhr);
-                    $('#shop-items-container').html('<p class="text-danger text-center">Error connectant amb el servidor.</p>');
+                    console.error("Error cargando items:", xhr);
+                    $('#shop-items-container').html('<p class="text-danger text-center">Error conectando con el servidor.</p>');
                 }
             });
         }
@@ -174,12 +197,12 @@
             let currentCoins = parseInt($('#coins-display').text());
 
             if (currentCoins < itemPrice) {
-                alert("⚠️ No tens suficients monedes per comprar " + itemName);
+                alert("⚠️ No tienes suficientes monedas para comprar " + itemName);
                 return;
             }
 
             // Confirmació simple
-            if(!confirm("Vols comprar " + itemName + " per " + itemPrice + " monedes?")) return;
+            if(!confirm("Quieres comprar " + itemName + " por " + itemPrice + " monedas?")) return;
 
             $.ajax({
                 type: 'POST',
@@ -187,11 +210,11 @@
                 contentType: 'application/json',
                 data: JSON.stringify(username),
                 success: function(response) {
-                    alert("✅ Compra realitzada: " + itemName);
+                    alert("✅ Compra realizada: " + itemName);
                     loadUserCoins(); // Actualitzem saldo
                 },
                 error: function(xhr) {
-                    let errorMsg = "Error desconegut";
+                    let errorMsg = "Error desconocido";
                     if(xhr.responseJSON && xhr.responseJSON.message) errorMsg = xhr.responseJSON.message;
                     alert("❌ Error en la compra: " + errorMsg);
                 }

@@ -35,6 +35,9 @@ body.clean-background {
     background-image: url('../img/backclean.png') !important;
 }
 
+body.clean-background2 {
+    background-image: url('../img/backclean2.png') !important;
+}
 
 
 /* Títols dins landing amb VT323 per defecte */
@@ -107,11 +110,12 @@ body.clean-background {
     transform: translateY(115px);   /* PUJA/BAIXA */
 }
 
-/* 4. BOTONS AMB redrectbttn.png */
+
 .hero-buttons {
     margin-top: 24px;
 }
 
+/* Botó pixel vermell */
 .game-btn {
     display: inline-flex;
     align-items: center;
@@ -140,23 +144,91 @@ body.clean-background {
     white-space: nowrap;      /* que “Iniciar Sesión” no es trenqui en dues línies */
     transition: transform 0.1s ease-out;
 }
-
 .game-btn:link,
 .game-btn:visited {
     color: #ffffff;
     text-decoration: none;
 }
-
 .game-btn:hover {
     transform: translateY(-1px);
 }
 
 /* Botó pixel blau */
 .game-btn-blue {
-    background-image: url('../img/bluerectbttn.png') !important;
-    background-size: 100% 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    /* mida del botó */
+    height: 52px;
+    padding: 0 18px;          /* espai lateral */
+    /* deixem que l'ample sigui automàtic segons el text */
+
+    background-image: url('../img/bluerectbttn.png');
     background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    font-family: 'PixelFont', 'VT323', monospace;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-decoration: none;
+
+    white-space: nowrap;      /* que “Iniciar Sesión” no es trenqui en dues línies */
+    transition: transform 0.1s ease-out;
 }
+.game-btn-blue:link,
+.game-btn-blue:visited {
+    color: #ffffff;
+    text-decoration: none;
+}
+.game-btn-blue:hover {
+    transform: translateY(-1px);
+}
+
+/* Botó pixel taronja */
+.game-btn-orange {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    /* mida del botó */
+    height: 52px;
+    padding: 0 18px;          /* espai lateral */
+    /* deixem que l'ample sigui automàtic segons el text */
+
+    background-image: url('../img/orangerectbttn.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    font-family: 'PixelFont', 'VT323', monospace;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-decoration: none;
+
+    white-space: nowrap;      /* que “Iniciar Sesión” no es trenqui en dues línies */
+    transition: transform 0.1s ease-out;
+}
+.game-btn-orange:link,
+.game-btn-orange:visited {
+    color: #ffffff;
+    text-decoration: none;
+}
+.game-btn-orange:hover {
+    transform: translateY(-1px);
+}
+
 
 
 
@@ -247,7 +319,20 @@ body.clean-background {
     padding: 40px;
 
     color: #ffffff;
+
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
 }
+
+.profile-card {
+    width: 100%;
+    margin: 0 auto;
+    /* si té float, el matem */
+    float: none;
+}
+
+
 
 /* Elimina neon del títol del formulari */
 .container-custom h2 {
@@ -271,9 +356,70 @@ body.clean-background {
     font-family: 'VT323', monospace;
 }
 
+.shop-container {
+    max-width: 1100px;
+    margin: 60px auto 40px auto;
+    padding: 30px 40px;
+}
+
 .form-control {
     font-size: 1.4rem;
     height: 48px;
     padding: 8px 12px;
     font-family: 'VT323', monospace;
 }
+
+.navbar-custom {
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.navbar-logo-center {
+    width: 100%;
+    text-align: center;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    pointer-events: none;
+}
+
+.navbar-logo-img {
+    height: 70px;
+    width: auto;
+    image-rendering: pixelated;
+}
+
+.navbar-logo-small {
+    height: 50px;     /* Ajusta la mida segons vulguis (30–45px recomanat) */
+    width: auto;
+}
+
+
+
+/* ======================================================================
+   TAULES
+   ====================================================================== */
+
+.table {
+    background-color: transparent !important;
+    color: white !important;
+}
+
+
+.table thead th,
+.table tbody td,
+.table tbody tr {
+    background-color: transparent !important;
+    color: white !important;
+}
+
+
+.table-borderless > :not(caption) > * > * {
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+
+
+
