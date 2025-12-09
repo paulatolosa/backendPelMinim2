@@ -422,4 +422,69 @@ body.clean-background2 {
 
 
 
+/* ======================================================================
+    ITEMS SHOP
+   ====================================================================== */
+
+/* ----------------------------- */
+/*   CONTENEDOR DE LA TIENDA     */
+/* ----------------------------- */
+
+.shop-container {
+    background: rgba(0, 0, 0, 0.45); /* fondo translúcido */
+    padding: 40px;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+/* ----------------------------- */
+/*       TARJETAS DE ITEMS       */
+/* ----------------------------- */
+
+.card {
+    background: rgba(20, 20, 20, 0.55) !important;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+}
+
+.card:hover {
+    transform: scale(1.03);
+    transition: 0.2s ease-in-out;
+    border-color: rgba(255, 215, 0, 0.7);
+}
+
+
+.btn-buy {
+    background-image: url('../img/redrectbttn.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: none !important;
+    color: #fff !important;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+
+    padding: 14px 0;
+    text-shadow: 2px 2px 2px black;
+
+    transition: transform 0.1s ease-in-out;
+}
+
+.btn-buy:hover {
+    transform: scale(1.05);
+    filter: brightness(1.15);
+}
+
+.btn-buy:active {
+    transform: scale(0.95);
+    filter: brightness(0.9);
+}
+
+
 
