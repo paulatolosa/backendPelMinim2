@@ -101,12 +101,31 @@
 <script>
     $(document).ready(function () {
 
+        // Obtener username
         const username = localStorage.getItem("username");
         if (!username) {
             window.location.href = "login.html";
             return;
         }
 
+        // --- Cargar monedas del usuario ---
+        function loadUserCoins() {
+            $.ajax({
+                type: 'GET',
+                url: '/v1/shop/monedas/' + username,
+                dataType: 'json',
+                success: function (response) {
+                    $('#coins-display').text(response.coins);
+                },
+                error: function () {
+                    console.log("Error cargando monedas");
+                }
+            });
+        }
+
+        loadUserCoins(); // Llamada para cargar las monedas
+
+        // --- Cargar ranking ---
         $.ajax({
             type: "GET",
             url: "/v1/shop/ranking",
@@ -134,6 +153,7 @@
         });
 
     });
+
 </script>
 
 </body>

@@ -15,9 +15,9 @@ import java.net.URI;
 public class Main {
     // Base URI the Grizzly HTTP server will listen on
 
-    // public static final String BASE_URI = "http://localhost:8080/v1/";
+     public static final String BASE_URI = "http://localhost:8080/v1/";
     // Si per android utilitzes un movil extern per executar el programa: Comenta el de adalt i descomenta el de abaix (crec que funciona amb el 0.0.0.0 per tots els casos)
-    public static final String BASE_URI = "http://0.0.0.0:8080/v1/";
+//    public static final String BASE_URI = "http://0.0.0.0:8080/v1/";
 
     /**
      * Starts Grizzly HTTP server exposing JAX-RS resources defined in this application.
