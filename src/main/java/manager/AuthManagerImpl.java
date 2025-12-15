@@ -88,9 +88,14 @@ public class AuthManagerImpl implements AuthManager {
         }
     }
 
+
+    // endpoint REGISTER --> backend(services/AuthManagerService.java): @POST, @Path("/register")
+    //                   --> android(AuthService): @POST("/v1/auth/register")
     @Override
     public void register(Usuario usuario) {
+
         validateRegistrationData(usuario);
+
         LOGGER.info("Usuario validado correctamente: " + usuario.getUsername());
 
         // Comprobar si el email ya existe
@@ -114,6 +119,9 @@ public class AuthManagerImpl implements AuthManager {
         LOGGER.info("Se ha registrado un nuevo usuario: " + usuario.getUsername());
     }
 
+
+    // endpoint LOGIN --> backend(services/AuthManagerService.java): @POST, @Path("/login")
+    //                --> android(AuthService): @POST("/v1/auth/login")
     @Override
     public Usuario login(Usuario usuario) {
         // --- LOG DE DEPURACIÓN ---
@@ -135,6 +143,7 @@ public class AuthManagerImpl implements AuthManager {
         LOGGER.info("Inicio de sesión exitoso para: " + usuario.getUsername());
         return usuarioExistent;
     }
+
 
     @Override
     public List<Usuario> getRegisteredUsers() {
